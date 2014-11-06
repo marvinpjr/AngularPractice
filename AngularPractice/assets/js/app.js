@@ -10,10 +10,11 @@
 
     var dodeca = {
         name: 'Dodecahedron',
-        price: 2.95,
+        price: 2,
         description: 'lovely ten sided gem',
         canPurchase: true,
-        soldOut: false
+        soldOut: false,
+        images: [{ full: 'dodeca-01-full.jpg', thumb: 'dodeca-01-thumb.jpg' }]
     }
 
     var pent = {
@@ -21,7 +22,8 @@
         price: 5.95,
         description: 'fancy five sided gem',
         canPurchase: false,
-        soldOut: false
+        soldOut: false,
+        images: [{ full: 'pent-01-full.jpg', thumb: 'pent-01-thumb.jpg' }]
     }
     var gems = [dodeca, pent];
 

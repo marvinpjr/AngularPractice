@@ -8,15 +8,19 @@
 <body ng-controller="StoreController as store">
     <!--basic expression-->
     <p>{{ "hello" + " world!" }}</p>
-
-    <div ng-repeat="product in store.products" ng-hide="product.soldOut">
-        <!--use expressions to reference properties of object-->
-        <h1>{{ product.name }}</h1>
-        <h2>${{ product.price }}</h2>
-        <p>{{ product.description }}</p>
-        <button ng-show="product.canPurchase">Add to Cart</button>
-    </div>
-
+    
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="product in store.products" ng-hide="product.soldOut">
+            <!--use expressions to reference properties of object-->
+            <h3>{{ product.name }}
+                <!--use a filter to affect the output-->
+                <em class="pull-right">{{ product.price | currency }}</em>
+                <img ng-src="{{ product.images[0].full }}"/>
+            </h3>
+            <button ng-show="product.canPurchase">Add to Cart</button>    
+        </li>
+    </ul>
+    
     <script src="assets/js/angular.js"></script>
     <script src="assets/js/app.js"></script>
     </body>
