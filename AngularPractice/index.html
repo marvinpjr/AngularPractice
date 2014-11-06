@@ -1,10 +1,23 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="store">
 <head>
     <title>Learning Angular</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 </head>
-<body>
+<!--use directive to reference store controller-->
+<body ng-controller="StoreController as store">
+    <!--basic expression-->
+    <p>{{ "hello" + " world!" }}</p>
+
+    <div ng-repeat="product in store.products" ng-hide="product.soldOut">
+        <!--use expressions to reference properties of object-->
+        <h1>{{ product.name }}</h1>
+        <h2>${{ product.price }}</h2>
+        <p>{{ product.description }}</p>
+        <button ng-show="product.canPurchase">Add to Cart</button>
+    </div>
+
     <script src="assets/js/angular.js"></script>
-</body>
+    <script src="assets/js/app.js"></script>
+    </body>
 </html>
