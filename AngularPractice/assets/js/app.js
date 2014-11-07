@@ -3,11 +3,7 @@
     // define module with no dependencies
     var app = angular.module('store', []);
 
-    // define a controller
-    app.controller('StoreController', function() {
-        this.products = gems;
-    });
-
+    //initialize data
     var dodeca = {
         name: 'Dodecahedron',
         price: 2,
@@ -27,4 +23,20 @@
     }
     var gems = [dodeca, pent];
 
+    // define controllers
+    app.controller('StoreController', function() {
+        this.products = gems;
+    });
+
+    app.controller('PanelController', function() {
+        this.tab = 1;
+
+        this.selectTab = function(setTab) {
+            this.tab = setTab;
+        }
+
+        this.isSelected = function(checkTab) {
+            return this.tab === checkTab;
+        }
+    });
 })();
