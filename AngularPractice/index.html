@@ -9,8 +9,6 @@
     <!--basic expression-->
     <p>{{ "hello" + " world!" }}</p>
     
-
-    
     <ul class="list-group">
         <li class="list-group-item" ng-repeat="product in store.products" ng-hide="product.soldOut">
             <!--use expressions to reference properties of object-->
@@ -39,7 +37,15 @@
                 </div>
                 <div class="panel" ng-show="panel.isSelected(3)">
                     <h4>Reviews</h4>
-                    <blockquote>None yet</blockquote>
+                    <blockquote ng-repeat="review in product.reviews">
+                        <b>Stars: {{ review.stars }}</b>
+                        {{ review.body }}
+                        <cite>by: {{ review.author }}</cite>
+                    </blockquote>
+                    
+                    <form name="reviewForm">
+                        
+                    </form>
                 </div>  
             </section>
         </li>
