@@ -3,6 +3,7 @@
 <head>
     <title>Learning Angular</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/app.css" rel="stylesheet" />
 </head>
 <!--use directive to reference store controller-->
 <body ng-controller="StoreController as store">
@@ -15,7 +16,7 @@
             <h3>{{ product.name }}
                 <!--use a filter to affect the output-->
                 <em class="pull-right">{{ product.price | currency }}</em>
-                <img ng-src="{{ product.images[0].full }}"/>
+                <img ng-src="{{ product.images[0].full }}" class="pull-left img-responsive img-thumbnail"/>
             </h3>
             <button ng-show="product.canPurchase">Add to Cart</button>
             
@@ -38,13 +39,41 @@
                 <div class="panel" ng-show="panel.isSelected(3)">
                     <h4>Reviews</h4>
                     <blockquote ng-repeat="review in product.reviews">
-                        <b>Stars: {{ review.stars }}</b>
+                        <b>Star: {{ review.stars }}</b>
                         {{ review.body }}
                         <cite>by: {{ review.author }}</cite>
                     </blockquote>
                     
-                    <form name="reviewForm">
+                    <form role="form" name="reviewForm" ng-controller="ReviewController as reviewCtrl"
+                          ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
+                        <blockquote>
+                            <b>Starts: {{ reviewCtrl.review.stars }}</b>
+                            {{ reviewCtrl.review.body }}
+                            <cite>by: {{ reviewCtrl.review.author }}</cite>
+                        </blockquote>
                         
+                        <div class="form-group">
+                            <label>Stars</label>    
+                            <select class="form-control" ng-model="reviewCtrl.review.stars" required>
+                                <option value="1">1 star</option>
+                                <option value="2">2 star</option>
+                                <option value="3">3 star</option>
+                                <option value="4">4 star</option>
+                                <option value="5">5 star</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Your review</label>
+                            <textarea class="form-control" ng-model="reviewCtrl.review.body" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>by:</label>
+                            <input class="form-control" ng-model="reviewCtrl.review.author" type="email" required />
+                        </div>
+
+                        <input type="submit" value="Submit"/>
                     </form>
                 </div>  
             </section>
