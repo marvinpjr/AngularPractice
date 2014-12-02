@@ -85,4 +85,11 @@
             return this.tab === checkTab;
         }
     });
+
+    app.directive('productTitle', function() {
+        return {
+            restrict: 'E', // stands for element, as in new html element; A would indicate an attribute on an element
+            templateUrl: 'templates/product-title.html' // url of template
+        };
+    });
 })();
