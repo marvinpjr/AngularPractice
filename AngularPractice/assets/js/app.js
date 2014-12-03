@@ -92,4 +92,24 @@
             templateUrl: 'templates/product-title.html' // url of template
         };
     });
+
+    app.directive('productPanels', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/product-panels.html',
+            controller: function () {
+                // alert('controller');
+                this.tab = 1;
+
+                this.selectTab = function (setTab) {
+                    this.tab = setTab;
+                }
+
+                this.isSelected = function (checkTab) {
+                    return this.tab === checkTab;
+                }
+            },
+            controllerAs: 'panels'
+        };
+    });
 })();
