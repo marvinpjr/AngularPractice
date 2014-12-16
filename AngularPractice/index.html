@@ -8,14 +8,12 @@
 <!--use directive to reference store controller-->
 <body ng-controller="StoreController as store">
     <!--basic expression-->
-    <p>{{ "hello" + " world!" }}</p>
+    <h1>{{ "Welcome to the " + " store!" }}</h1>
     
     <ul class="list-group">
         <li class="list-group-item" ng-repeat="product in store.products" ng-hide="product.soldOut">
-            <!--use expressions to reference properties of object-->
             <h3>
                 <product-title></product-title> 
-                <!--ng-include="'templates/product-title.html'">--> 
             </h3>
             <button ng-show="product.canPurchase">Add to Cart</button>
             
@@ -23,6 +21,7 @@
     </ul>
     
     <script src="assets/js/angular.js"></script>
+    <script src="assets/js/data.js"></script>
     <script src="assets/js/app.js"></script>
     </body>
 </html>
