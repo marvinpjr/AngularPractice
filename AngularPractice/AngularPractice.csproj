@@ -76,6 +76,7 @@
     <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="assets\js\data.js" />
     <Content Include="assets\js\npm.js" />
+    <Content Include="assets\js\products.js" />
     <Content Include="index.html" />
     <Content Include="assets\js\angular.js" />
     <Content Include="templates\product-panels.html" />
